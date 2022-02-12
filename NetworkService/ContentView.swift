@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var url = "https://catfact.ninja/fact"
+    @ObservedObject var vm = FactViewModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack{
+            FlippedCard(vm: vm, side1: Text(vm.facts), side2: Text(vm.facts))
+        }.onAppear{vm.getFact()}
     }
 }
 
@@ -19,3 +23,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
